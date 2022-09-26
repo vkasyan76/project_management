@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "projectmanagement-7d48e",
+    "projectmanagement": "projectmanagement-7d48e"
+  },
+  "targets": {},
+  "etags": {}
+}
