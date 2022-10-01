@@ -6,7 +6,7 @@ export const useLogin = () => {
     const [isCancelled, setIsCancelled] = useState(false)
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
-    const { dispatch, user } = useAuthContext()
+    const { dispatch } = useAuthContext()
 
     const login = async(email, password) => {
         setError(null)
@@ -17,7 +17,7 @@ export const useLogin = () => {
             const res = await projectAuth.signInWithEmailAndPassword(email, password)
 
             // update online status
-            const { uid } = user
+
             await projectFirestore
                 .collection('users')
                 .doc(res.user.uid)
