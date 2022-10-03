@@ -12,6 +12,7 @@ import Create from './pages/create/Create'
 import Project from './pages/project/Project'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
+import OnlineUsers from './components/OnlineUsers'
 import { useAuthContext } from './hooks/useAuthContext'
 
 import './App.css'
@@ -52,6 +53,7 @@ function App() {
               />
             </Routes>
           </div>
+          {user && <OnlineUsers />}
         </Router>
       )}
     </div>
