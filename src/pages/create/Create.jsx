@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 import './Create.css'
 import { useCollection } from '../../hooks/useCollection'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { timestamp } from '../../firebase/config'
+import { useFirestore } from '../../hooks/useFirestore'
 
 export default function Create() {
   const categories = [
@@ -15,12 +17,15 @@ export default function Create() {
   ]
 
   // <option value="">label</option>
+  const navigate = useNavigate()
 
   const { documents } = useCollection('users')
 
   const [users, setUsers] = useState([])
 
   const { user } = useAuthContext()
+
+  const { addDocument, response } = useFirestore('projects')
 
   // form field values
   const [name, setName] = useState('')
@@ -39,7 +44,7 @@ export default function Create() {
     }
   }, [documents])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setFormError(null)
     if (!category) {
@@ -74,9 +79,12 @@ export default function Create() {
       createdBy,
       assignedUsersList,
     }
-
     // console.log(name, details, dueDate, category.value, assignedUsers)
-    console.log(project)
+    // console.log(project)
+    await addDocument(project)
+    if (!response.error) {
+      navigate('/')
+    }
   }
 
   return (
