@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useDocument } from '../../hooks/useDocument'
 import ProjectSummary from './ProjectSummary'
 import './Project.css'
+import ProjectComments from './ProjectComments'
 
 function Project() {
   const { id } = useParams()
@@ -18,6 +19,7 @@ function Project() {
     <div className="project-details">
       {/* <h1>{document.name}</h1> */}
       <ProjectSummary project={document} />
+      <ProjectComments />
     </div>
   )
 }
