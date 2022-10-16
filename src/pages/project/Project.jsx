@@ -19,7 +19,7 @@ function Project() {
     <div className="project-details">
       {/* <h1>{document.name}</h1> */}
       <ProjectSummary project={document} />
-      <ProjectComments />
+      <ProjectComments project={document} />
     </div>
   )
 }
