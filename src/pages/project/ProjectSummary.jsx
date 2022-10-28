@@ -36,6 +36,10 @@ export default function ProjectSummary({ project }) {
           Mark as complete
         </button>
       )}
+
+      {/* <button className="btn" onClick={handleClick}>
+        Mark as complete
+      </button> */}
     </div>
   )
 }
